@@ -69,6 +69,12 @@ namespace JwtAuthApp
                 };
             });
 
+            services.Configure<DataProtectionTokenProviderOptions>(options =>
+            {
+                // Reset token valid for 2 hours
+                options.TokenLifespan = TimeSpan.FromHours(2);
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { 
